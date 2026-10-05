@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────
+   Bhavishya design tokens
+   Change a colour here and it changes everywhere — in the desktop
+   and the mobile version. Use them as Tailwind classes, for example
+   bg-brand-600, text-ink-3, border-line, shadow-card.
+   ───────────────────────────────────────────────────────────── */
+@theme {
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Royal indigo — brand, buttons, principal */
+  --color-brand-50: #f4f1ff;
+  --color-brand-100: #e9e4ff;
+  --color-brand-200: #d4cbff;
+  --color-brand-400: #8e73ff;
+  --color-brand-500: #6c4dff;
+  --color-brand-600: #5134e8;
+  --color-brand-700: #3a22b8;
+
+  /* Night — sidebar, dark sections */
+  --color-night-700: #2a1f6e;
+  --color-night-800: #1c1548;
+  --color-night-900: #17113d;
+  --color-night-950: #120d33;
+
+  /* Marigold — highlights, parent */
+  --color-marigold-50: #fff6e0;
+  --color-marigold-100: #ffe6ad;
+  --color-marigold-300: #ffd27a;
+  --color-marigold-400: #ffb020;
+  --color-marigold-500: #e89a00;
+  --color-marigold-700: #a86200;
+
+  /* Mint — success, teacher */
+  --color-mint-50: #e8f8f1;
+  --color-mint-100: #c6efdf;
+  --color-mint-500: #12b886;
+  --color-mint-700: #0a7a58;
+
+  /* Coral — alerts, absent */
+  --color-coral-50: #fdeeef;
+  --color-coral-100: #fad3d6;
+  --color-coral-500: #ef4e5a;
+  --color-coral-700: #b4232e;
+
+  /* Ocean — information, on leave */
+  --color-ocean-50: #ebf3fe;
+  --color-ocean-100: #cfe0fb;
+  --color-ocean-500: #2f80ed;
+  --color-ocean-700: #1c5fb8;
+
+  --color-rose-50: #fceaf2;
+  --color-rose-500: #c2417b;
+  --color-teal-50: #e4f7f8;
+  --color-teal-500: #0e9aa7;
+
+  /* Text and surfaces */
+  --color-ink: #19172c;
+  --color-ink-2: #4b4867;
+  --color-ink-3: #8784a3;
+  --color-ink-4: #b8b5cb;
+  --color-line: #ece9f5;
+  --color-line-2: #e1ddee;
+  --color-track: #efedf6;
+  --color-canvas: #f6f4fb;
+  --color-cream: #fffbf4;
+  --color-sand: #f0e7d8;
+
+  --shadow-card: 0 1px 2px rgb(25 23 44 / 0.04), 0 8px 22px -14px rgb(25 23 44 / 0.16);
+  --shadow-lift: 0 2px 6px rgb(25 23 44 / 0.06), 0 22px 44px -20px rgb(25 23 44 / 0.28);
+  --shadow-float: 0 30px 70px -24px rgb(23 17 61 / 0.38);
+  --shadow-glow: 0 6px 16px -6px rgb(81 52 232 / 0.6);
+
+  --animate-typing: typing 1.2s infinite ease-in-out;
+  --animate-rise: rise 0.25s ease-out;
+
+  @keyframes typing {
+    0%, 80%, 100% { opacity: 0.25; transform: translateY(0); }
+    40% { opacity: 1; transform: translateY(-2px); }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* Fonts are loaded in app/layout.tsx with next/font. */
+@theme inline {
+  --font-sans: var(--font-inter), var(--font-devanagari), system-ui, sans-serif;
+  --font-serif: var(--font-lora), Georgia, serif;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    font-feature-settings: "cv11", "ss01";
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+/* ─────────── Custom utilities (backgrounds that are too long for class names) ─────────── */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+@utility bg-dots {
+  background-image: radial-gradient(rgb(81 52 232 / 0.13) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+}
+@utility bg-sun {
+  background: radial-gradient(circle at 40% 40%, #ffd27a, #ffb020 55%, #ff9a1f);
+}
+@utility bg-night-glow {
+  background:
+    radial-gradient(60% 80% at 85% 15%, rgb(255 176 32 / 0.2), transparent 60%),
+    radial-gradient(70% 90% at 10% 100%, rgb(108 77 255 / 0.45), transparent 60%),
+    #140f38;
+}
+@utility bg-ai {
+  background:
+    radial-gradient(120% 120% at 100% 0%, rgb(255 176 32 / 0.22) 0%, transparent 45%),
+    linear-gradient(140deg, #2a1f6e 0%, #3b2aa6 60%, #5134e8 100%);
+}
+@utility bg-sidebar {
+  background:
+    radial-gradient(120% 60% at 0% 0%, #2e2272 0%, transparent 60%),
+    linear-gradient(180deg, #1c1548 0%, #130e35 100%);
+}
+@utility bg-cta {
+  background:
+    radial-gradient(60% 120% at 100% 0%, rgb(255 176 32 / 0.35), transparent 60%),
+    linear-gradient(135deg, #2a1f6e, #5134e8);
+}
+@utility bg-gold-card {
+  background:
+    radial-gradient(90% 60% at 100% 0%, rgb(255 176 32 / 0.25), transparent 60%),
+    linear-gradient(160deg, #211854, #130e35);
+}
+@utility bg-phone-screen {
+  background: linear-gradient(180deg, #2a1f6e, #5134e8 60%, #7b5cff);
+}
+@utility tier-silver {
+  background: linear-gradient(135deg, #f4f5f8, #c9cdd6 45%, #eef0f4 60%, #b8bdc8);
+  color: #2a2a2a;
+}
+@utility tier-gold {
+  background: linear-gradient(135deg, #ffe7a3, #e9b44c 45%, #ffe3a0 60%, #d49a2a);
+  color: #4a2c00;
+}
+@utility tier-platinum {
+  background: linear-gradient(135deg, #eaf2ff, #aeb9d9 45%, #e3e8f8 60%, #8f99c2);
+  color: #1f2547;
+}
+@utility tier-diamond {
+  background: linear-gradient(135deg, #e9fbff, #9fd8f0 45%, #e4f7ff 60%, #7fc4e4);
+  color: #073b4c;
+}
+/* Lined notebook paper for homework photos */
+@utility notebook {
+  background-color: #fffef7;
+  background-image: repeating-linear-gradient(180deg, transparent 0 15px, #c9dcf3 15px 16px);
+  background-position: 0 7px;
+}
